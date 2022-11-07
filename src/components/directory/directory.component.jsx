@@ -26,7 +26,8 @@ const Directory = () => {
         },
         {
             title: 'womens',
-            imageUrl: 'https://i.ibb.co/GCCdy8t/womens.png',
+            // imageUrl: 'https://i.ibb.co/GCCdy8t/womens.png',
+            imageUrl: 'https://i.ibb.co/R70vBrQ/men.png',
             size: 'large',
             id: 4,
             linkUrl: 'shop/womens',
