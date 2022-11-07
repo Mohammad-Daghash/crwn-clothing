@@ -1,19 +1,43 @@
 import React from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
 
 import './menu-item.styles.scss';
 
-const MenuItem = ({ title, imageUrl, size }) => (
-    <div className={`${size} menu-item`}>
-        <div
-            className="background-image"
-            style={{ backgroundImage: `url(${imageUrl})` }}
-        ></div>
+const MenuItem = ({ title, imageUrl, size, linkUrl }) => {
+    const history = useNavigate();
+    const match = useLocation();
 
-        <div className="content">
-            <div className="title">{title.toUpperCase()}</div>
-            <span className="subtitle">SHOP NOW</span>
+    return (
+        <div
+            className={`${size} menu-item`}
+            onClick={() => history(`${match.pathname}${linkUrl}`)}
+        >
+            <div
+                className="background-image"
+                style={{ backgroundImage: `url(${imageUrl})` }}
+            ></div>
+
+            <div className="content">
+                <div className="title">{title.toUpperCase()}</div>
+                <span className="subtitle">SHOP NOW</span>
+            </div>
         </div>
-    </div>
-);
+    );
+};
+
+// const MenuItem = ({ title, imageUrl, size, history }) => (
+
+//     <div className={`${size} menu-item`}>
+//         <div
+//             className="background-image"
+//             style={{ backgroundImage: `url(${imageUrl})` }}
+//         ></div>
+
+//         <div className="content">
+//             <div className="title">{title.toUpperCase()}</div>
+//             <span className="subtitle">SHOP NOW</span>
+//         </div>
+//     </div>
+// );
 
 export default MenuItem;

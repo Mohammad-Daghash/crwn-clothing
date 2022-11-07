@@ -8,13 +8,6 @@ const HomePage = () => {
         <div className="homepage">
             <h1>Welcome to my Homepage</h1>
             <Directory />
-            {/* <div className="directory-menu">
-                <MenuItem title='HATS' />
-                <MenuItem title='JACKETS' />
-                <MenuItem title='SHOES' />
-                <MenuItem title='WOMENS' />
-                <MenuItem title='MENS' />
-            </div> */}
         </div>
     );
 };
