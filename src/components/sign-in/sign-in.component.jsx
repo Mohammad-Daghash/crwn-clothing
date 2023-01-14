@@ -18,12 +18,12 @@ const SignIn = props => {
         setPassword('');
     };
 
-    const handleChange = event => {
-        const { value, name } = event.target;
-        console.log('name ', name);
-        console.log('value ', value);
-        console.log('target ', event.target);
-    };
+    // const handleChange = event => {
+    //     const { value, name } = event.target;
+    //     console.log('name ', name);
+    //     console.log('value ', value);
+    //     console.log('target ', event.target);
+    // };
 
     return (
         <div className="sign-in">
@@ -35,7 +35,7 @@ const SignIn = props => {
                     name="email"
                     type="email"
                     value={email}
-                    handleChange={handleChange}
+                    handleChange={e => setEmail(e.target.value)}
                     label="email"
                     required
                 />
@@ -43,7 +43,7 @@ const SignIn = props => {
                     name="password"
                     type="password"
                     value={password}
-                    handleChange={handleChange}
+                    handleChange={e => setPassword(e.target.value)}
                     label="password"
                     required
                 />
