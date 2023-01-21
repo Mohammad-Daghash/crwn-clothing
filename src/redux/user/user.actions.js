@@ -1,7 +1,8 @@
 import store from '../store';
+import { UserActionTypes } from './user.types';
 
 export const setCurrentUser = user =>
     store.dispatch({
-        type: 'SET_CURRENT_USER',
+        type: UserActionTypes.SET_CURRENT_USER,
         payload: user,
     });
