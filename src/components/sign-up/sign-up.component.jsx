@@ -33,7 +33,6 @@ export const SignUp = () => {
             setEmail('');
             setPassword('');
             setConfirmPassword('');
-            
         } catch (err) {
             console.error(err);
         }
