@@ -1,16 +1,27 @@
-import React, { useState } from 'react';
+import React from 'react';
+// import { Navigate, Route, Routes, useLocation, useParams } from 'react-router-dom';
 
-import SHOP_DATA from './shop.data';
+// import CollectionsOverview from '../../components/collections-overview/collections-overview.component';
+// import CategoryPage from '../category/category.component';
 
-import CollectionPreview from '../../components/collection-preview/collection-preview.component';
+const ShopPage = () => {
+    // const { pathname } = useLocation();
+    // const params = useParams();
+    // console.log(params)
 
-const ShopPage = props => {
-    const [collections] = useState(SHOP_DATA);
     return (
         <div className="shop-page">
-            {collections.map(({ id, ...otherCollectionProps }) => (
-                <CollectionPreview key={id} {...otherCollectionProps} />
-            ))}
+            {/* <Routes>
+                <Route
+                    path={`${pathname}`}
+                    element={<CollectionsOverview />}
+                />
+                <Route
+                    path={`${pathname}/:categoryId`}
+                    element={<CategoryPage />}
+                />
+            </Routes> */}
+            SHOP PAGE
         </div>
     );
 };
