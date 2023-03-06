@@ -1,27 +1,46 @@
-import React from 'react';
-// import { Navigate, Route, Routes, useLocation, useParams } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { Route, Routes } from 'react-router-dom';
+import {
+    firestore,
+    collectionsSnapshotToMap,
+} from '../../firebase/firebase.utils';
+import { updateCollections } from '../../redux/shop/shop.actions';
 
-// import CollectionsOverview from '../../components/collections-overview/collections-overview.component';
-// import CategoryPage from '../category/category.component';
+import CollectionsOverview from '../../components/collections-overview/collections-overview.component';
+import CollectionPage from '../collection/collection.component';
+import WithSpinner from '../../components/with-spinner/with-spinner.component';
+
+const CollectionsOverviewWithSpinner = WithSpinner(CollectionsOverview);
+const CollectionsPageWithSpinner = WithSpinner(CollectionPage);
 
 const ShopPage = () => {
-    // const { pathname } = useLocation();
-    // const params = useParams();
-    // console.log(params)
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        // const unsubscribeFromAuth = null;
+        const collectionRef = firestore.collection('collections');
+
+        collectionRef.get().then(async snapshot => {
+            const collectionsMap = collectionsSnapshotToMap(snapshot);
+            updateCollections(collectionsMap);
+            setLoading(false);
+        });
+    }, []);
 
     return (
         <div className="shop-page">
-            {/* <Routes>
+            <Routes>
                 <Route
-                    path={`${pathname}`}
-                    element={<CollectionsOverview />}
+                    index
+                    element={
+                        <CollectionsOverviewWithSpinner isLoading={loading} />
+                    }
                 />
                 <Route
-                    path={`${pathname}/:categoryId`}
-                    element={<CategoryPage />}
+                    path="/:collectionId"
+                    element={<CollectionsPageWithSpinner isLoading={loading} />}
                 />
-            </Routes> */}
-            SHOP PAGE
+            </Routes>
         </div>
     );
 };

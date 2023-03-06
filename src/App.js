@@ -10,11 +10,9 @@ import './App.css';
 import Header from './components/header/header.component';
 
 import HomePage from './pages/homepage/homepage.component';
-// import ShopPage from './pages/shop/shop.component';
+import ShopPage from './pages/shop/shop.component';
 import SignInAndSignUpPage from './components/sign-in-and-sign-up/sign-in-and-sign-up.component';
 import CheckoutPage from './pages/checkout/checkout.component';
-import CollectionPage from './pages/collection/collection.component';
-import CollectionsOverview from './components/collections-overview/collections-overview.component';
 
 function App() {
     const currentUser = useSelector(selectCurrentUser);
@@ -45,10 +43,7 @@ function App() {
             <Header />
             <Routes>
                 <Route path="/" element={<HomePage />} />
-                <Route path="/shop">
-                    <Route index element={<CollectionsOverview />} />
-                    <Route path=":collectionId" element={<CollectionPage />} />
-                </Route>
+                <Route path="/shop/*" element={<ShopPage />} />
                 <Route path="/checkout" element={<CheckoutPage />} />
                 <Route
                     path="/signin"
