@@ -1,29 +1,43 @@
-import React from 'react';
-// import { Navigate, Route, Routes, useLocation, useParams } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { Route, Routes } from 'react-router-dom';
+import { fetchCollectionsStartAsync } from '../../redux/shop/shop.actions';
+import store from '../../redux/store';
 
-// import CollectionsOverview from '../../components/collections-overview/collections-overview.component';
-// import CategoryPage from '../category/category.component';
+import CollectionsOverviewContainer from '../../components/collections-overview/collections-overview.container';
+import CollectionPageContainer from '../collection/collection.container';
 
 const ShopPage = () => {
-    // const { pathname } = useLocation();
-    // const params = useParams();
-    // console.log(params)
+    useEffect(() => {
+        store.dispatch(fetchCollectionsStartAsync());
+    }, []);
 
     return (
         <div className="shop-page">
-            {/* <Routes>
+            <Routes>
+                <Route index element={<CollectionsOverviewContainer />} />
                 <Route
-                    path={`${pathname}`}
-                    element={<CollectionsOverview />}
+                    path="/:collectionId"
+                    element={<CollectionPageContainer />}
                 />
-                <Route
-                    path={`${pathname}/:categoryId`}
-                    element={<CategoryPage />}
-                />
-            </Routes> */}
-            SHOP PAGE
+            </Routes>
         </div>
     );
 };
 
 export default ShopPage;
+
+// Note:  Another way to pass isLoading to component
+// import CollectionsOverview from '../../components/collections-overview/collections-overview.component';
+// import CollectionPage from '../collection/collection.component';
+// import WithSpinner from '../../components/with-spinner/with-spinner.component';
+// import { useSelector } from 'react-redux';
+// import {
+//     selectIsCollectionFetching,
+//     selectIsCollectionsLoaded,
+// } from '../../redux/shop/shop.selectors';
+
+// const CollectionsOverviewWithSpinner = WithSpinner(CollectionsOverview);
+// const CollectionsPageWithSpinner = WithSpinner(CollectionPage);
+
+// const isCollectionFetching = useSelector(selectIsCollectionFetching);
+// const isCollectionsLoaded = useSelector(selectIsCollectionsLoaded);
