@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 
+import { signUpStart } from '../../redux/user/user.actions';
+
 import FormInput from '../form-input/form-input.component';
 import CustomButton from '../custom-button/custom-button.component';
-
-import { auth, createUserProfileDocument } from '../../firebase/firebase.utils';
 
 import './sign-up.styles.scss';
 
@@ -21,28 +21,9 @@ export const SignUp = () => {
             return;
         }
 
-        try {
-            const { user } = await auth.createUserWithEmailAndPassword(
-                email,
-                password
-            );
-
-            await createUserProfileDocument(user, { displayName });
-
-            setDisplayName('');
-            setEmail('');
-            setPassword('');
-            setConfirmPassword('');
-        } catch (err) {
-            console.error(err);
-        }
+        signUpStart({ displayName, email, password });
     };
 
-    // const handleChange = e => {
-    //     const { name, value } = e.target;
-    //     // console.log(e.target)
-    //     setDisplayName(value)
-    // }
 
     return (
         <div className="sign-up">
