@@ -1,8 +1,7 @@
-import { auth } from '../../firebase/firebase.utils';
-
 import { useSelector } from 'react-redux';
 import { selectCurrentUser } from '../../redux/user/user.selectors';
 import { selectCartHidden } from '../../redux/cart/cart.selectors';
+import { signOutStart } from '../../redux/user/user.actions';
 
 import CartIcon from '../cart-icon/cart-icon.component';
 import CartDropdown from '../cart-dropdown/cart-dropdown.component';
@@ -29,7 +28,7 @@ const Header = () => {
                 <OptionLink to="/shop">SHOP</OptionLink>
                 <OptionLink to="/shop">CONTACT</OptionLink>
                 {currentUser ? (
-                    <OptionLink as="div" onClick={() => auth.signOut()}>
+                    <OptionLink as="div" onClick={signOutStart}>
                         SIGN OUT
                     </OptionLink>
                 ) : (
