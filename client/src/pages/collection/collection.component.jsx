@@ -1,17 +1,16 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useParams } from 'react-router-dom';
-import { useSelector } from 'react-redux';
-import { selectCollection } from '../../redux/shop/shop.selectors';
+import CollectionsContext from '../../contexts/collections/collections.context';
 
 import CollectionItem from '../../components/collection-item/collection-item.component';
 
 import './collection.styles.scss';
 
 const CollectionPage = () => {
+    const collections = useContext(CollectionsContext);
     const { collectionId } = useParams();
-    const collection = useSelector(selectCollection(collectionId));
+    const collection = collections[collectionId];
     const { title, items } = collection;
-    console.log(collection);
 
     return (
         <div className="collection-page">

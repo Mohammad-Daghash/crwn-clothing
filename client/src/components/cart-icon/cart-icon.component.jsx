@@ -1,21 +1,17 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
-import { toggleCartHidden } from '../../redux/cart/cart.actions';
-import { selectCartItemsCount } from '../../redux/cart/cart.selectors';
+import React, { useContext } from 'react';
+import { CartContext } from '../../providers/cart/cart.provider';
 
 import { ReactComponent as ShoppingIcon } from '../../assets/shopping-bag.svg';
 
 import './cart-icon.styles.scss';
 
 const CartIcon = () => {
-    const itemCount = useSelector(selectCartItemsCount);
-    
+    const { toggleHidden, cartItemsCount } = useContext(CartContext);
+
     return (
-        <div className="cart-icon" onClick={toggleCartHidden}>
+        <div className="cart-icon" onClick={toggleHidden}>
             <ShoppingIcon className="shopping-icon" />
-            <span className="item-count">
-                {itemCount}
-            </span>
+            <span className="item-count">{cartItemsCount}</span>
         </div>
     );
 };

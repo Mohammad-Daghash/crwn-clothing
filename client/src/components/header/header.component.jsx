@@ -1,7 +1,7 @@
-import { useSelector } from 'react-redux';
-import { selectCurrentUser } from '../../redux/user/user.selectors';
-import { selectCartHidden } from '../../redux/cart/cart.selectors';
-import { signOutStart } from '../../redux/user/user.actions';
+import { useContext } from 'react';
+import { auth } from '../../firebase/firebase.utils';
+import { CartContext } from '../../providers/cart/cart.provider';
+import CurrentUserContext from '../../contexts/current-user/current-user.context';
 
 import CartIcon from '../cart-icon/cart-icon.component';
 import CartDropdown from '../cart-dropdown/cart-dropdown.component';
@@ -16,8 +16,8 @@ import {
 } from './header.styles';
 
 const Header = () => {
-    const currentUser = useSelector(selectCurrentUser);
-    const hidden = useSelector(selectCartHidden);
+    const currentUser = useContext(CurrentUserContext);
+    const { hidden } = useContext(CartContext);
 
     return (
         <HeaderContainer>
@@ -28,7 +28,7 @@ const Header = () => {
                 <OptionLink to="/shop">SHOP</OptionLink>
                 <OptionLink to="/shop">CONTACT</OptionLink>
                 {currentUser ? (
-                    <OptionLink as="div" onClick={signOutStart}>
+                    <OptionLink as="div" onClick={() => auth.signOut()}>
                         SIGN OUT
                     </OptionLink>
                 ) : (

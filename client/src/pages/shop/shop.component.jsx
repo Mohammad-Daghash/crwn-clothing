@@ -1,23 +1,15 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Route, Routes } from 'react-router-dom';
-import { fetchCollectionsStart } from '../../redux/shop/shop.actions';
 
-import CollectionsOverviewContainer from '../../components/collections-overview/collections-overview.container';
-import CollectionPageContainer from '../collection/collection.container';
+import CollectionsOverview from '../../components/collections-overview/collections-overview.component';
+import CollectionPage from '../collection/collection.component';
 
 const ShopPage = () => {
-    useEffect(() => {
-        fetchCollectionsStart();
-    }, []);
-
     return (
         <div className="shop-page">
             <Routes>
-                <Route index element={<CollectionsOverviewContainer />} />
-                <Route
-                    path="/:collectionId"
-                    element={<CollectionPageContainer />}
-                />
+                <Route index element={<CollectionsOverview />} />
+                <Route path="/:collectionId" element={<CollectionPage />} />
             </Routes>
         </div>
     );

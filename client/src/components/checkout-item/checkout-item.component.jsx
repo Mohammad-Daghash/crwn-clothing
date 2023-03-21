@@ -1,14 +1,11 @@
-import React from 'react';
-import {
-    addItem,
-    removeItem,
-    clearItemFromCart as clearItem,
-} from '../../redux/cart/cart.actions';
+import React, { useContext } from 'react';
+import { CartContext } from '../../providers/cart/cart.provider';
 
 import './checkout-item.styles.scss';
 
 const CheckoutItem = ({ cartItem }) => {
     const { name, imageUrl, price, quantity } = cartItem;
+    const { addItem, removeItem, clearItemFromCart } = useContext(CartContext);
 
     return (
         <div className="checkout-item">
@@ -26,7 +23,10 @@ const CheckoutItem = ({ cartItem }) => {
                 </div>
             </span>
             <span className="price">{price}</span>
-            <div className="remove-button" onClick={() => clearItem(cartItem)}>
+            <div
+                className="remove-button"
+                onClick={() => clearItemFromCart(cartItem)}
+            >
                 &#10005;
             </div>
         </div>

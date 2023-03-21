@@ -1,9 +1,7 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import { useSelector } from 'react-redux';
-import { selectCartItems } from '../../redux/cart/cart.selectors';
-import { toggleCartHidden } from '../../redux/cart/cart.actions';
+import { CartContext } from '../../providers/cart/cart.provider';
 
 import CartItem from '../cart-item/cart-item.component';
 import CustomButton from '../custom-button/custom-button.component';
@@ -11,7 +9,7 @@ import CustomButton from '../custom-button/custom-button.component';
 import './cart-dropdown.styles.scss';
 
 const CartDropdown = () => {
-    const cartItems = useSelector(selectCartItems);
+    const { cartItems, toggleHidden } = useContext(CartContext);
     const history = useNavigate();
 
     return (
@@ -28,7 +26,7 @@ const CartDropdown = () => {
             <CustomButton
                 onClick={() => {
                     history('/checkout');
-                    toggleCartHidden();
+                    toggleHidden();
                 }}
             >
                 GO TO CHECKOUT
