@@ -1,25 +1,68 @@
 {
-    "name": "crwn-clothing-server",
-    "version": "1.0.0",
-    "scripts": {
-        "client": "cd client& npm start",
-        "server": "nodemon server.js",
-        "build": "cd client& npm run build",
-        "dev": "concurrently --kill-others-on-fail \"npm run server\" \"npm run client\"",
-        "start": "node server.js"
-    },
+    "name": "crwn-clothing",
+    "version": "0.1.0",
+    "private": true,
     "dependencies": {
+        "@reduxjs/toolkit": "^1.9.1",
+        "@stripe/react-stripe-js": "^2.1.0",
+        "@stripe/stripe-js": "^1.52.0",
+        "@testing-library/jest-dom": "^5.16.5",
+        "@testing-library/react": "^13.4.0",
+        "@testing-library/user-event": "^13.5.0",
         "body-parser": "^1.20.2",
-        "cors": "^2.8.5",
         "dotenv": "^16.0.3",
-        "express": "^4.18.2",
-        "stripe": "^11.14.0"
+        "firebase": "^9.15.0",
+        "react": "^18.2.0",
+        "react-dom": "^18.2.0",
+        "react-redux": "^8.0.5",
+        "react-router-dom": "^6.4.2",
+        "react-scripts": "^5.0.1",
+        "react-stripe-checkout": "^2.6.3",
+        "redux": "^4.2.0",
+        "redux-logger": "^3.0.6",
+        "redux-persist": "^6.0.0",
+        "redux-saga": "^1.2.2",
+        "redux-thunk": "^2.4.2",
+        "reselect": "^4.1.7",
+        "sass": "^1.55.0",
+        "stripe": "^11.11.0",
+        "styled-components": "^5.3.6",
+        "web-vitals": "^2.1.4",
+        "workbox-background-sync": "^6.5.4",
+        "workbox-broadcast-update": "^6.5.4",
+        "workbox-cacheable-response": "^6.5.4",
+        "workbox-core": "^6.5.4",
+        "workbox-expiration": "^6.5.4",
+        "workbox-google-analytics": "^6.5.4",
+        "workbox-navigation-preload": "^6.5.4",
+        "workbox-precaching": "^6.5.4",
+        "workbox-range-requests": "^6.5.4",
+        "workbox-routing": "^6.5.4",
+        "workbox-strategies": "^6.5.4",
+        "workbox-streams": "^6.5.4"
     },
-    "devDependencies": {
-        "concurrently": "^7.6.0"
+    "scripts": {
+        "start": "react-scripts start",
+        "build": "react-scripts build",
+        "test": "react-scripts test",
+        "eject": "react-scripts eject"
     },
-    "engines": {
-        "node": "^16.16.0",
-        "npm": "^8.11.0"
+    "eslintConfig": {
+        "extends": [
+            "react-app",
+            "react-app/jest"
+        ]
+    },
+    "browserslist": {
+        "production": [
+            ">0.2%",
+            "not dead",
+            "not op_mini all"
+        ],
+        "development": [
+            "last 1 chrome version",
+            "last 1 firefox version",
+            "last 1 safari version"
+        ]
     }
 }
