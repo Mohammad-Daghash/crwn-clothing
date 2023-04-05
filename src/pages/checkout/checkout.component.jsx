@@ -6,9 +6,10 @@ import {
     selectCartTotal,
 } from '../../redux/cart/cart.selectors';
 
-import StripeCheckoutButton from '../../components/stripe-button/stripe-button.component';
+// import StripeCheckoutButton from '../../components/stripe-button/stripe-button.component';
 
 import './checkout.styles.scss';
+import PaymentForm from '../../components/payment-form/payment-form.component';
 
 const CheckoutPage = () => {
     const cartItems = useSelector(selectCartItems);
@@ -45,7 +46,8 @@ const CheckoutPage = () => {
                 <br />
                 4242 4242 4242 4242 4242 - Exp: 01/24 - CVV: 123
             </div>
-            <StripeCheckoutButton price={total} />
+            <PaymentForm />
+            {/* <StripeCheckoutButton price={total} /> */}
         </div>
     );
 };
