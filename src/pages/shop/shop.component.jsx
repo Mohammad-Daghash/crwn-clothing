@@ -2,8 +2,8 @@ import React, { useEffect } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { fetchCollectionsStart } from '../../redux/shop/shop.actions';
 
-import CollectionsOverviewContainer from '../../components/collections-overview/collections-overview.container';
-import CollectionPageContainer from '../collection/collection.container';
+import { default as CollectionsOverview } from '../../components/collections-overview/collections-overview.container';
+import { default as CollectionPage } from '../collection/collection.container';
 
 const ShopPage = () => {
     useEffect(() => {
@@ -13,10 +13,10 @@ const ShopPage = () => {
     return (
         <div className="shop-page">
             <Routes>
-                <Route index element={<CollectionsOverviewContainer />} />
+                <Route index element={<CollectionsOverview />} />
                 <Route
                     path="/:collectionId"
-                    element={<CollectionPageContainer />}
+                    element={<CollectionPage />}
                 />
             </Routes>
         </div>
