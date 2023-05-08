@@ -7,6 +7,7 @@ import { Elements } from '@stripe/react-stripe-js';
 
 import store, { persistor } from './redux/store';
 import { stripePromise } from './utils/stripe/stripe.utils';
+import * as serviceWorkerRegistration from './serviceWorkerRegistration';
 
 import './index.css';
 import App from './App';
@@ -23,3 +24,5 @@ root.render(
         </BrowserRouter>
     </Provider>
 );
+
+serviceWorkerRegistration.register();
