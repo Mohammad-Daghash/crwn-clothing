@@ -2,7 +2,7 @@ import React from 'react';
 
 import './cart-item.styles.scss';
 
-export const CartItem = ({ item: { imageUrl, price, name, quantity } }) => (
+export const CartItem = React.memo(({ item: { imageUrl, price, name, quantity } }) => (
     <div className="cart-item">
         <img src={imageUrl} alt="item" />
         <div className="item-details">
@@ -12,6 +12,6 @@ export const CartItem = ({ item: { imageUrl, price, name, quantity } }) => (
             </span>
         </div>
     </div>
-);
+));
 
 export default CartItem;
