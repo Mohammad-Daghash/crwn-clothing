@@ -3,7 +3,7 @@ import { useNavigate, useLocation } from 'react-router-dom';
 
 import './menu-item.styles.scss';
 
-const MenuItem = ({ title, imageUrl, size, linkUrl }) => {
+const MenuItem = React.memo(({ title, imageUrl, size, linkUrl }) => {
     const history = useNavigate();
     const match = useLocation();
 
@@ -23,21 +23,6 @@ const MenuItem = ({ title, imageUrl, size, linkUrl }) => {
             </div>
         </div>
     );
-};
-
-// const MenuItem = ({ title, imageUrl, size, history }) => (
-
-//     <div className={`${size} menu-item`}>
-//         <div
-//             className="background-image"
-//             style={{ backgroundImage: `url(${imageUrl})` }}
-//         ></div>
-
-//         <div className="content">
-//             <div className="title">{title.toUpperCase()}</div>
-//             <span className="subtitle">SHOP NOW</span>
-//         </div>
-//     </div>
-// );
+});
 
 export default MenuItem;
