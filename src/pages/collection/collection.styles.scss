@@ -10,7 +10,7 @@
     .items {
         display: grid;
         grid-template-columns: 1fr 1fr 1fr 1fr;
-        grid-gap: 10px;     // Note: Note that grid-gap is an alias for this property (gap).
+        grid-gap: 10px;     // Note: grid-gap is an alias for this property (gap).
 
         & .collection-item {
             margin-bottom: 30px;
