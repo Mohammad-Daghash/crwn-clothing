@@ -20,6 +20,7 @@
             display: grid;
             grid-template-columns: 1fr 1fr;
             grid-gap: 15px; // Note: Note that grid-gap is an alias for this property (gap).
+            row-gap: 40px;
         }
     }
 }
