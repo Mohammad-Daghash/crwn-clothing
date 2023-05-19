@@ -39,11 +39,13 @@ const CheckoutPage = () => {
             <div className="total">
                 <span>TOTAL: ${total}</span>
             </div>
-            <div className="test-warning">
-                *Please use the following test credit card for payments*
-                <br />
-                4242 4242 4242 4242 4242 - Exp: 01/24 - CVV: 123
-            </div>
+            {process.env.NODE_ENV === 'production' && (
+                <div className="test-warning">
+                    *Please use the following test credit card for payments*
+                    <br />
+                    4242 4242 4242 4242 4242 - Exp: 01/24 - CVV: 123
+                </div>
+            )}
             <PaymentForm />
         </div>
     );
