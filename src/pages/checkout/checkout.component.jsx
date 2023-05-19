@@ -39,7 +39,7 @@ const CheckoutPage = () => {
             <div className="total">
                 <span>TOTAL: ${total}</span>
             </div>
-            {process.env.NODE_ENV === 'production' && (
+            {process.env.NODE_ENV === 'development' && (
                 <div className="test-warning">
                     *Please use the following test credit card for payments*
                     <br />
